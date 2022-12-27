@@ -32,20 +32,26 @@
         <%= f.submit 'Create Book' %>
       <% end %>
     </div>
-    
+
     <div class="col-md-8 offset-md-1">
-      <h2>Book datail</h2>
+      <h2>Book detail</h2>
       <table class="table">
         <tbody>
           <tr>
             <td>
-              <%= image_tag @book.user.get_profile_image(100, 100) %></br>
               <%= link_to user_path(@book.user.id) do %>
+              <%= image_tag @book.user.get_profile_image(100, 100) %></br>
               <%= @user.name %>
               <% end %>
             </td>
             <td><%= @book.title %></td>
             <td><%= @book.body %></td>
+            <td>
+              <%= link_to "Edit", edit_book_path(@book.id), class: 'btn btn-sm btn-success' %>
+            </td>
+            <td>
+              <%= link_to "Destroy", book_path(@book.id), method: :delete, class: 'btn btn-sm btn-danger', "data-confirm" => "Are you sure?" %>
+            </td>
           </tr>
         </tbody>
       </table>
